@@ -9,36 +9,34 @@ class Animal {
 protected:
 
 public:
-	Animal() {}
 	virtual void makeSound() = 0;
 };
 
 class Dog : public Animal {
 public:
-	Dog() {}
 	void makeSound();
 };
 
 class Cat : public Animal {
 public:
-	Cat() {}
 	void makeSound();
 };
 
 class Cow : public Animal {
 public:
-	Cow() {}
 	void makeSound();
 };
 
 class Zoo {
 private:
-	Animal* animals[10] = {};
+	// animals 크기 제한
+	static const int size = 10;
+	Animal* animals[size] = {};
 	int idx = 0;
 public:
-	Zoo();
 	void addAnimal(Animal* animal);
 	void performActions();
+	int getSize();
 	~Zoo();
 };
 

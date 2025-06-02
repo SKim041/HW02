@@ -16,10 +16,6 @@ void Cow::makeSound() {
 	cout << "Cow: Mooooooo" << endl;
 }
 
-Zoo::Zoo() {
-
-}
-
 Zoo::~Zoo() {
 	for (auto item : this->animals) {
 		delete item;
@@ -34,7 +30,7 @@ void Zoo::addAnimal(Animal* animal) {
 	// - 같은 동물이라도 여러 번 추가될 수 있습니다.
 	// - 입력 매개변수: Animal* (추가할 동물 객체)
 	// - 반환값: 없음
-	if (idx >= sizeof(this->animals) / sizeof(Animal)) {
+	if (idx >= sizeof(this->animals) / sizeof(animals[0])) {
 		cout << "Overcrowded!!" << endl;
 	}
 	else {
@@ -53,13 +49,17 @@ void Zoo::performActions() {
 	}
 }
 
+int Zoo::getSize() {
+	// animals 배열 크기 출력
+	return this->size;
+}
+
 Animal* createRandomAnimal() {
 	// 랜덤 동물을 생성하는 함수
 	// - 0, 1, 2 중 하나의 난수를 생성하여 각각 Dog, Cat, Cow 객체 중 하나를 동적으로 생성합니다.
 	// - 생성된 객체는 Animal 타입의 포인터로 반환됩니다.
 	// - 입력 매개변수: 없음
 	// - 반환값: Animal* (생성된 동물 객체의 포인터)
-	Animal* animal;
 	int randNum = rand() % 3;
 
 	switch (randNum) {

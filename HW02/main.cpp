@@ -21,17 +21,19 @@ int main() {
 	Zoo* zoo=new Zoo;
 
 	for (Animal* item : arrAnimals) {
-
 		item->makeSound();
+		delete item;	// 동적 할당 해제
 	}
 
-	for (int i = 0; i < 10; i++) {
+	cout << "------------ZOO------------" << endl;
+
+	for (int i = 0; i < zoo->getSize(); i++) {
 		zoo->addAnimal(createRandomAnimal());
 	}
 
 	zoo->performActions();
 
-	delete zoo;
+	delete zoo;	//동적 할당 해제
 
 
 	return 0;
